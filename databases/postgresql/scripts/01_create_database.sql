@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS markindex;
+CREATE DATABASE markindex;
