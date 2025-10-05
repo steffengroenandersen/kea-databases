@@ -25,6 +25,10 @@ docker exec -it markindex_postgres psql -U postgres -d markindex
 
 \d users
 
+## Show all functions and procedures
+
+\df
+
 ## Run queries
 
 ### Select all users
