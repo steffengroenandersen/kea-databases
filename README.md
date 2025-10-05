@@ -11,6 +11,7 @@ https://docs.google.com/document/d/1F-ysB2HH01QXZIwTl-DLjf1scuIV6_KNCHyHOFms99o/
 1. To launch: docker-compose up --build
 2. To wipe: docker-compose down -v
 3. Access database: docker exec -it markindex_postgres psql -U postgres -d markindex
+4. Access data: try to write SELECT \* FROM users;
 
 ## Project Overview
 
