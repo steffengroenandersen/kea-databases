@@ -29,6 +29,18 @@ docker exec -it markindex_postgres psql -U postgres -d markindex
 
 \df
 
+## Show all index
+
+\di
+
+## Show all views
+
+\dv
+
+## Show triggers for specific tables
+
+\d <users>
+
 ## Run queries
 
 ### Select all users

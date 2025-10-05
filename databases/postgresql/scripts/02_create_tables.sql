@@ -5,7 +5,8 @@
 CREATE TABLE IF NOT EXISTS users (
     user_id SERIAL PRIMARY KEY,
     email TEXT NOT NULL UNIQUE,
-    password_hash TEXT NOT NULL
+    password_hash TEXT NOT NULL,
+    last_updated TIMESTAMP
 );
 
 -- Create businesses table
