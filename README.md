@@ -6,6 +6,12 @@ A comprehensive database implementation project for the "Markindex" marketing an
 
 https://docs.google.com/document/d/1F-ysB2HH01QXZIwTl-DLjf1scuIV6_KNCHyHOFms99o/edit?usp=sharing
 
+## Installation procedure
+
+1. To launch: docker-compose up --build
+2. To wipe: docker-compose down -v
+3. Access database: docker exec -it markindex_postgres psql -U postgres -d markindex
+
 ## Project Overview
 
 **Markindex** is a marketing analytics platform that integrates with Meta's advertising APIs to provide comprehensive reporting and analytics for digital marketing campaigns.
