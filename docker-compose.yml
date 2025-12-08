@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+  api:
+    build: ./api
+    container_name: markindex_api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+    command: npx nodemon --legacy-watch server.js
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: markindex_postgres
+    environment:
+      POSTGRES_PASSWORD: postgres_password
+    ports:
+      - "5444:5432"
+    volumes:
+      - ./databases/postgresql/scripts:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
+
+  mongo:
+    image: mongo:7
+    container_name: markindex_mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+      MONGO_INITDB_DATABASE: markindex
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_data:/data/db
+      - ./databases/mongodb/init:/docker-entrypoint-initdb.d
+
+  neo4j:
+    image: neo4j:5-community
+    container_name: markindex_neo4j
+    environment:
+      NEO4J_AUTH: neo4j/password
+      NEO4J_dbms_memory_pagecache_size: 512M
+      NEO4J_dbms_memory_heap_max__size: 512M
+    ports:
+      - "7474:7474"  # HTTP (Neo4j Browser)
+      - "7687:7687"  # Bolt protocol
+    volumes:
+      - neo4j_data:/data
+      - ./databases/neo4j/init:/import
+
+volumes:
+  postgres_data:
+  mongo_data:
+  neo4j_data:
